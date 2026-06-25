@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="32" r="31" fill="#0A0A0A"/>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#C5A572" stroke-width="1.4"/>
+  <g fill="#D9BE8E">
+    <!-- base / escadaria -->
+    <polygon points="11,47 53,47 50,44 14,44"/>
+    <rect x="14" y="42" width="36" height="2.4"/>
+    <!-- alas laterais -->
+    <rect x="16" y="33" width="9.5" height="9"/>
+    <rect x="38.5" y="33" width="9.5" height="9"/>
+    <!-- corpo central -->
+    <rect x="25.5" y="26" width="13" height="16"/>
+    <!-- frontão / cúpula -->
+    <polygon points="23.5,26 32,17.5 40.5,26"/>
+    <!-- torre + finial -->
+    <rect x="31.2" y="12" width="1.6" height="6"/>
+    <circle cx="32" cy="11.4" r="1.6"/>
+  </g>
+  <!-- portal central (recorte) -->
+  <path d="M29 42 v-5.5 a3 3 0 0 1 6 0 V42 Z" fill="#0A0A0A"/>
+  <!-- janelas das alas (recortes) -->
+  <g fill="#0A0A0A">
+    <rect x="18.4" y="35.4" width="1.7" height="5"/>
+    <rect x="21.6" y="35.4" width="1.7" height="5"/>
+    <rect x="40.7" y="35.4" width="1.7" height="5"/>
+    <rect x="43.9" y="35.4" width="1.7" height="5"/>
+  </g>
+</svg>

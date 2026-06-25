@@ -1,0 +1,6 @@
+# Ficheiros que não precisam de ir para o deploy
+_data_menu/
+Design sem nome (2).png
+.claude/
+.env*.local
+README.md

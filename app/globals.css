@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+/* dark: segue o atributo data-theme (não o prefers-color-scheme) */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ---------- Tema: DARK (padrão) ---------- */
+:root,
+[data-theme="dark"] {
+  --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --bg: #0a0a0a;
+  --bg-2: #100f0d;
+  --surface: rgba(255, 255, 255, 0.035);
+  --surface-2: rgba(255, 255, 255, 0.06);
+  --fg: #f5f2ec;
+  --muted: rgba(245, 242, 236, 0.62);
+  --faint: rgba(245, 242, 236, 0.40);
+  --line: rgba(197, 165, 114, 0.22);
+  --line-soft: rgba(245, 242, 236, 0.10);
+  --gold: #c5a572;
+  --gold-bright: #e3c9a0;
+  --gold-deep: #9c7c46;
+  --shadow: rgba(0, 0, 0, 0.5);
+  --grain: 0.05;
+}
+
+/* ---------- Tema: CLARO (creme) ---------- */
+[data-theme="light"] {
+  --bg: #f5f2ec;
+  --bg-2: #efe9dd;
+  --surface: rgba(28, 22, 14, 0.025);
+  --surface-2: rgba(28, 22, 14, 0.05);
+  --fg: #1c1814;
+  --muted: rgba(28, 24, 20, 0.64);
+  --faint: rgba(28, 24, 20, 0.45);
+  --line: rgba(150, 116, 60, 0.30);
+  --line-soft: rgba(28, 24, 20, 0.12);
+  --gold: #9c7a40;
+  --gold-bright: #b8924f;
+  --gold-deep: #7c602f;
+  --shadow: rgba(60, 45, 20, 0.14);
+  --grain: 0.025;
+}
+
+/* ---------- Tokens Tailwind ---------- */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
+  --color-gold-deep: var(--gold-deep);
+
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+
+  --tracking-luxe: 0.28em;
+
+  --animate-marquee: marquee 38s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes kenburns {
+  0% { transform: scale(1.05) translate3d(0, 0, 0); }
+  100% { transform: scale(1.16) translate3d(0, -1.5%, 0); }
+}
+.kenburns { animation: kenburns 22s ease-in-out alternate infinite; }
+
+@keyframes scrollcue {
+  0%, 100% { transform: translateY(0); opacity: 0.45; }
+  50% { transform: translateY(7px); opacity: 1; }
+}
+.scrollcue { animation: scrollcue 2.2s ease-in-out infinite; }
+
+/* ---------- Base ---------- */
+* {
+  border-color: var(--line-soft);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* grão de filme subtil — eleva a sensação premium */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: var(--grain);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3, h4, .font-serif {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 400;
+}
+
+::selection {
+  background: var(--gold);
+  color: #0a0a0a;
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--gold-deep);
+  border-radius: 999px;
+  border: 3px solid var(--bg);
+}
+
+/* ---------- Utilitários ---------- */
+.u-container {
+  width: 100%;
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 768px) {
+  .u-container { padding-inline: 2.5rem; }
+}
+
+.text-gold-gradient {
+  background: linear-gradient(100deg, var(--gold-deep), var(--gold-bright) 45%, var(--gold) 70%, var(--gold-deep));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* etiqueta caligráfica em maiúsculas espaçadas */
+.eyebrow {
+  font-family: var(--font-sans), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  font-size: 0.70rem;
+  font-weight: 500;
+  color: var(--gold);
+}
+
+/* régua dourada com losango central */
+.rule-gold {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  color: var(--gold);
+}
+.rule-gold::before,
+.rule-gold::after {
+  content: "";
+  height: 1px;
+  width: clamp(2rem, 12vw, 6rem);
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+.rule-gold::after { background: linear-gradient(90deg, var(--gold), transparent); }
+
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+}
+
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 0;
+  background: var(--gold);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-underline:hover::after { width: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
