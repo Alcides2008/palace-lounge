@@ -102,13 +102,12 @@ export function Nav() {
         </div>
       </nav>
 
-      {/* Overlay — mobile */}
+      {/* Overlay — mobile. Fundo sólido inline (à prova de cascata) + display toggle. */}
       <div
-        className={`mobile-menu fixed inset-0 top-[4.75rem] z-40 origin-top transition-all duration-500 lg:hidden ${
-          open
-            ? "pointer-events-auto opacity-100"
-            : "pointer-events-none opacity-0"
+        className={`fixed inset-0 top-[4.75rem] z-40 overflow-y-auto lg:hidden ${
+          open ? "block" : "hidden"
         }`}
+        style={{ backgroundColor: "var(--bg)" }}
       >
         <ul className="u-container flex flex-col gap-1 pt-8">
           {nav.map((item, i) => (
