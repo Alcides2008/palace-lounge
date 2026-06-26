@@ -35,6 +35,7 @@ export function Nav() {
     : undefined;
 
   return (
+    <>
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         solid
@@ -101,8 +102,9 @@ export function Nav() {
           </button>
         </div>
       </nav>
+    </header>
 
-      {/* Overlay — mobile. Fundo sólido inline (à prova de cascata) + display toggle. */}
+      {/* Overlay — mobile. Fora do <header> para o fixed cobrir o ecrã (o backdrop-filter do header criava um containing block). */}
       <div
         className={`fixed inset-0 top-[4.75rem] z-40 overflow-y-auto lg:hidden ${
           open ? "block" : "hidden"
@@ -140,6 +142,6 @@ export function Nav() {
           </li>
         </ul>
       </div>
-    </header>
+    </>
   );
 }
