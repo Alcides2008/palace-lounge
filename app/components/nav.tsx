@@ -104,7 +104,7 @@ export function Nav() {
 
       {/* Overlay — mobile */}
       <div
-        className={`fixed inset-0 top-[4.75rem] z-40 origin-top bg-bg/97 backdrop-blur-xl transition-all duration-500 lg:hidden ${
+        className={`mobile-menu fixed inset-0 top-[4.75rem] z-40 origin-top transition-all duration-500 lg:hidden ${
           open
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"

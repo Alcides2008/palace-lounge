@@ -199,6 +199,14 @@ h1, h2, h3, h4, .font-serif {
 }
 .link-underline:hover::after { width: 100%; }
 
+/* Fundo do menu mobile — fosco, opaco e dependente do tema (preto/creme) */
+.mobile-menu {
+  background-color: var(--bg); /* opaco — fallback à prova de tudo */
+  background-color: color-mix(in srgb, var(--bg) 95%, transparent);
+  -webkit-backdrop-filter: blur(18px) saturate(1.1);
+  backdrop-filter: blur(18px) saturate(1.1);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
